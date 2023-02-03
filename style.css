@@ -83,12 +83,7 @@ img {
 section .card .item {
   padding: 20px;
   text-align: center;
-  opacity: 0;
   transition: 0.5s;
-}
-
-section .card:hover .item {
-  opacity: 1;
 }
 
 section .card .item h1 {
