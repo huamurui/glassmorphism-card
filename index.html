@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" type="text/css" rel="stylesheet" />
+    <title>Glassmorphism</title>
+  </head>
+  <body>
+    <section>
+      <div class="card">
+        <div class="item">
+          <h1>01</h1>
+          <h2>HTML5, CSS3</h2>
+          <p>new tech to build a website.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="item">
+          <h1>02</h1>
+          <a href="https://huamurui.github.io/">
+            <img src="https://huamurui.github.io/logo.svg" alt="huamurui"/>
+          </a>
+          <h2>云苔</h2>
+          <p>a web developer, UI/UX designer.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="item">
+          <h1>03</h1>
+          <h2>VanillaJs</h2>
+          <p id = "rain">People use it as a joke to remind other developers that many things can be done nowadays without the need for additional JavaScript libraries. </p>
+        </div>
+      </div>
+    </section>
+
+    <script
+      type="text/javascript"
+      src="vanilla-tilt.js"
+    ></script>
+    <script>
+
+      // 3d
+      VanillaTilt.init(document.querySelectorAll(".card"), {
+        max: 25,
+        speed: 400,
+        glare: true,
+        "max-glare": 1,
+      });
+
+      // 炫彩文字
+      const p = document.querySelector('#rain');
+      console.log(...p.textContent);
+      p.innerHTML = [...p.textContent].map(cur => `<span>${cur}</span>`).join('');
+      console.log(p.innerHTML);
+      const spans = document.querySelectorAll('span');
+      spans.forEach((span, i) => {
+        span.addEventListener('mouseover', function() {
+          this.classList.add('rainbow');
+        });
+        span.addEventListener('animationend', function() {
+          this.classList.remove('rainbow');
+        });
+      });
+
+
+
+      // https://stackoverflow.com/questions/20435653/what-is-vanillajs
+      // 嗯...还有为什么这玩意叫vanilla.js...
+      // People use it as a joke to remind other developers that many things can be done nowadays without the need for additional JavaScript libraries. 
+
+      // 好吧，这个仓库主要做的是鼠标事件监听，然后在鼠标移动的时候，改变元素的transform属性，从而实现3D效果。
+      // 附加的一些效果，比如光晕，阴影，倾斜等等，也有处理..
+    </script>
+  </body>
+</html>

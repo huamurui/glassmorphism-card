@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #222;
+}
+
+/* css 的伪类，这里是用来做背景的 */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#00adff, #ffffff);
+  clip-path: circle(30% at left 70%);
+}
+
+body {
+  background: linear-gradient(135deg, #00adff, #ffbfbf, #5670ff, #ffbfbf);
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#ffbfbf, #999999);
+  clip-path: circle(20% at right 10%);
+}
+
+section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  flex-wrap: wrap;
+  z-index: 1;
+}
+
+section .card {
+  position: relative;
+  width: 280px;
+  height: 400px;
+  margin: 30px;
+  box-shadow: 20px 20px 50px #12121280;
+  border-radius: 15px;
+  background: #ffffff1b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #ffffff80;
+  border-left: 1px solid #ffffff80;
+  /* 下面这一行是毛玻璃的效果...然而，这个和下面那个，搞悬浮特效的translateZ有冲突...日,不弄这个了 */
+  /* backdrop-filter: blur(5px); */
+}
+.card {
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+}
+.item {
+  transform: translateZ(50px);
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  border-radius: 99999px;
+}
+
+section .card .item {
+  padding: 20px;
+  text-align: center;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+section .card:hover .item {
+  opacity: 1;
+}
+
+section .card .item h1 {
+  position: absolute;
+  top: -80px;
+  right: 20px;
+  font-size: 8em;
+  pointer-events: none;
+  color: #ffffff50;
+}
+
+section .card .item h2 {
+  font-size: 1.8em;
+  color: #fff;
+  /* z-index: 1; */
+}
+
+section .card .item p {
+  font-size: 1em;
+  color: #333;
+  font-weight: 300;
+}
+
+/* 以下代码为实现文字的一些特效 */
+
+p {
+  font-size: 5em;
+  font-weight: bold;
+  color: blueviolet;
+}
+p > span {
+  display: inline-block;
+}
+/* 为了使span标签显示空格 */
+span {
+  white-space: pre;
+}
+.rainbow {
+  animation: rainbow 5s linear 1 alternate both;
+}
+@keyframes rainbow {
+  25% {
+    color: #ffbfbf;
+  }
+  50% {
+    color: #fbf902;
+  }
+  75% {
+    color: #00ffff;
+  }
+}
